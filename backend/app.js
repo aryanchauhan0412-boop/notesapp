@@ -1,9 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose")
-const dotenv = require("dotenv");
-const MONGO_URL = "mongodb://127.0.0.1:27017/notesapp"
-const Note = require("./models/notes");
+require("dotenv").config();
 const path = require("path");
 const methodOverride = require("method-override");
 const cors = require("cors");
@@ -16,8 +14,7 @@ main()
 .catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect(MONGO_URL);
-
+  await mongoose.connect(process.env.MONGO_URL);
 }
 
 app.use(cors({
