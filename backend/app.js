@@ -9,16 +9,12 @@ const cors = require("cors");
 const noteRouter = require("./routes/notesRoutes");
 const userRouter = require("./routes/userRoutes")
 
-main()
+mongoose.connect(process.env.MONGO_URL)
 .then(() => console.log("connection successfully"))
 .catch(err => console.log(err));
 
-async function main() {
-  await mongoose.connect(process.env.MONGO_URL);
-}
-
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "*",
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
 app.set("view engine", "ejs");
