@@ -15,10 +15,10 @@ const getAuthConfig = () => {
   };
 };
 
-export const loginUser = (data) =>
+export const loginUser = (email, password) =>
   axios.post(`${BASE_URL}/login`, {email, password});
 
-export const signupUser = (data) =>
+export const signupUser = (name, email, password) =>
   axios.post(`${BASE_URL}/signup`, {name, email, password});
 
 export const getNotes = () => axios.get(API, getAuthConfig());
