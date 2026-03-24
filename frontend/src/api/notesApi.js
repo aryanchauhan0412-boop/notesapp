@@ -2,6 +2,8 @@ import axios from "axios";
 
 const API = `${import.meta.env.VITE_API_URL}/notes`;
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 const getAuthConfig = () => {
   const token = localStorage.getItem("token");
 
@@ -12,6 +14,12 @@ const getAuthConfig = () => {
     },
   };
 };
+
+export const loginUser = (data) =>
+  axios.post(`${BASE_URL}/login`, {email, password});
+
+export const signupUser = (data) =>
+  axios.post(`${BASE_URL}/signup`, {name, email, password});
 
 export const getNotes = () => axios.get(API, getAuthConfig());
 
