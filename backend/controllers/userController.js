@@ -1,5 +1,5 @@
 const User =  require("../models/user.js");
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 
 const signup = async(req, res) => {
@@ -34,9 +34,8 @@ const signup = async(req, res) => {
       }
     });
 
-    res.status(201).json({message: "user created successfully"})
-
   }catch(err){
+    console.error(err);
     res.status(500).json({err: err.message})
   }
 }
@@ -71,6 +70,7 @@ const login = async(req, res) => {
       }
     })
   } catch (error) {
+    console.error(err);
     res.status(500).json({ error: error.message });
   }
 }

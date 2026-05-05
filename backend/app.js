@@ -9,9 +9,11 @@ const cors = require("cors");
 const noteRouter = require("./routes/notesRoutes");
 const userRouter = require("./routes/userRoutes")
 
-mongoose.connect(process.env.MONGO_URL)
-.then(() => console.log("connection successfully"))
-.catch(err => console.log(err));
+const MONGO_URL = "mongodb://127.0.0.1:27017/notesapp";
+
+mongoose.connect(MONGO_URL)
+  .then(() => console.log("DB connected"))
+  .catch(err => console.log(err));
 
 app.use(cors({
   origin: "*",
